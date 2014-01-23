@@ -1,0 +1,16 @@
+#!/bin/sh
+# Open Source DE detector
+# Returns 1 (KDE) 2 (GNOME/XFCE/XORG) 3 (CLI/PURE)
+ps -ef | grep '[k]icker' > /dev/null 2>&1
+if [ $? -eq 0 ]
+then
+exit 1
+else
+ps -ef | grep 'X ' > /dev/null 2>&1
+if [ $? -eq 0 ]
+then
+exit 2
+else
+exit 3
+fi
+fi

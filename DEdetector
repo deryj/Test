@@ -1,0 +1,31 @@
+#!/bin/bash
+# Shows the DE to the user
+./showde
+if (($? == 0))
+then
+echo "An error has occured"
+echo "Error code: $?"
+exit 127
+fi
+./showde
+if (($? == 1))
+then
+echo "KDE/QT"
+exit 0
+fi
+./showde
+if (($? == 2))
+then
+echo "GNOME/XFCE/XORG"
+exit 0
+fi
+./showde
+if (($? == 3))
+then
+echo "CLI/PURE"
+exit 0
+else
+echo "An error has occured"
+echo "Error code: $?"
+exit $?
+fi
